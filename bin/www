@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('c4h:server');
 var http = require('http');
+var config = require('../config/database'); // get db config file
+var mongoose = require('mongoose');
 
 /**
  * Get port from environment and store in Express.
@@ -22,12 +24,19 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
- * Listen on provided port, on all network interfaces.
+ * Connect to database then Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+mongoose.connect(config.database, function (err) {
+    if(err){
+        console.log("Can't connect to database");
+    } else {
+        server.listen(port);
+        server.on('error', onError);
+        server.on('listening', onListening);
+        console.log("Connected to database and listening on: " + port);
+    }
+});
 
 /**
  * Normalize a port into a number, string, or false.
