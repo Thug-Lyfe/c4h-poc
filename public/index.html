@@ -1,16 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>MEAN Seed</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+
+    <!-- custom scripts, controls asf. !-->
+    <script src="js/mainScript.js"></script>
+
 </head>
-<body ng-app="meanseed" ng-controller="AppCtrl">
-<div class="container">
-    <h1>C4H</h1>
+<body  ng-app="meanseed" ng-controller="AppCtrl">
+
+<!-- HEADER AND NAVBAR -->
+<header ng-controller="AppCtrl">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Angular Routing Example</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#signup"><i class="fa fa-sign-in"></i> Sign Up Here!!!</a></li>
+                <li><a href="#login"><i class="fa fa-user-plus"></i> Login</a></li>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+                <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT AND INJECTED VIEWS -->
+<div id="main">
+
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+
     <div ng-view></div>
+
 </div>
+
 </body>
 </html>
