@@ -22,7 +22,7 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#/">Angular Routing Example</a>
+                <a class="navbar-brand" href="#/">Caucasians for Hire</a>
             </div>
 
             <ul class="nav navbar-nav navbar-right">
@@ -31,6 +31,7 @@
                 <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
                 <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
                 <li ng-show="!currentUser"><a href="#login"><i class="fa fa-sign-in"></i> Login</a></li>
+                <li ng-show="currentUser"><a href="#profile"><i class="fa fa-user"></i> {{currentUser.userName}}</a></li>
                 <li ng-show="currentUser"><a href="#/" ng-click="logout()"><i class="fa fa-sign-out"></i> Sign out</a></li>
             </ul>
         </div>

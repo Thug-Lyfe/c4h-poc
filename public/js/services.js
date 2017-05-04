@@ -71,7 +71,7 @@ angular.module('meanseed')
             login: login,
             register: register,
             logout: logout,
-            isAuthenticated: isAuthenticated
+            isAuthenticated: function() {return isAuthenticated;},
         };
     })
 
