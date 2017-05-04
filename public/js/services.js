@@ -53,8 +53,7 @@ angular.module('meanseed')
                 $http.post(API_ENDPOINT.url + '/user/authenticate', user).then(function(result) {
                     if (result.data.token) {
                         storeUserCredentials(result.data.token);
-                        userName=user.userName;
-                        resolve(result.data.msg);
+                        resolve(result.data.user);
                     } else {
                         reject(result.data.msg);
                     }
