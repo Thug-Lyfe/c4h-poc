@@ -10,6 +10,7 @@ var jwt = require('jwt-simple');
 
 var api = require('./routes/api');
 var users = require('./routes/users');
+var secure = require('./routes/secure');
 
 var app = express();
 
@@ -33,7 +34,7 @@ app.use(function(req, res, next) {
 });
 
 // only authorized users can access /api/ endpoint
-app.use('/api', function(req, res, next) {
+app.use('/secure', function(req, res, next) {
     passport.authenticate('jwt', {session: false}, function(err, user, info) {
         if (err) { res.status(403).json({mesage:"Token could not be authenticated",fullError: err}) }
         if (user) { return next(); }
@@ -47,8 +48,9 @@ app.use(morgan('dev'));
 // Use the passport package in our application
 app.use(passport.initialize());
 
-app.use('/', api);
-app.use('/users', users);
+app.use('/secure', secure);
+app.use('/api', api);
+app.use('/user', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
