@@ -39,17 +39,7 @@ scotchApp.config(function($routeProvider, $locationProvider, $httpProvider) {
         });
 
 });
-scotchApp.run(function ($rootScope, $location, AuthService, AUTH_EVENTS) {
-    $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
-        if (!AuthService.isAuthenticated()) {
-            console.log(next.name);
-            if (next.name !== 'outside.login' && next.name !== 'outside.register') {
-                event.preventDefault();
-                $location.path('/login');
-            }
-        }
-    });
-});
+
 
 scotchApp.controller('AppCtrl', function($scope) {
 
