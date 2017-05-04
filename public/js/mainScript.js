@@ -22,6 +22,13 @@ angular.module('meanseed', ['ngRoute'])
             controller  : 'aboutController'
         })
 
+        // route for profile page
+        .when('/profile', {
+            templateUrl : 'pages/headers/profile.html',
+            controller  : 'profileController',
+            isLogin: true
+        })
+
         // route for the contact page
         .when('/contact', {
             templateUrl : 'pages/headers/contact.html',
@@ -40,12 +47,10 @@ angular.module('meanseed', ['ngRoute'])
 
     })
     .run(function ($rootScope, $location, AuthService, AUTH_EVENTS) {
-    $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+    $rootScope.$on('$routeChangeStart', function (event,next, current) {
         if (!AuthService.isAuthenticated()) {
-            console.log(next.name);
-            if (next.name !== 'outside.login' && next.name !== 'outside.register') {
-                event.preventDefault();
-                $location.path('/login');
+            if (next.isLogin) {
+                $location.path('/login').search({msg: "Please login before viewing this page."});
             }
         }
     });

@@ -22,11 +22,17 @@ angular.module('meanseed')
         $scope.message = 'Look! I am an about page.';
     })
 
+    .controller('profileController', function($scope, AuthService) {
+        $scope.message = 'Look! This is your profile. Your username is: ' + $scope.currentUser.userName;
+    })
+
     .controller('contactController', function($scope) {
         $scope.message = 'Contact us! JK. This is just a demo.';
     })
 
     .controller('loginViewController', function($scope, AuthService, $location) {
+        var urlParams = $location.search();
+        $scope.message = urlParams.msg;
         $scope.user = {
             userName: '',
             password: ''
