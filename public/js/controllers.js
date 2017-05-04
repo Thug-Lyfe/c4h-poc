@@ -6,7 +6,7 @@ angular.module('meanseed')
         // create a message to display in our view
         $scope.message = 'Everyone come and see how good I look!';
         $scope.currentUser = null;
-        $scope.isAuthorized = AuthService.isAuthorized;
+        $scope.isAuthorized = false;
 
         $scope.setCurrentUser = function (user) {
             $scope.currentUser = user;
@@ -33,9 +33,10 @@ angular.module('meanseed')
         };
 
         $scope.login = function() {
-            AuthService.login($scope.user).then(function(msg) {
+            AuthService.login($scope.user).then(function(user) {
                 $location.path('/about');
-                $scope.setCurrentUser($scope.user);
+                $scope.setCurrentUser(user);
+                $scope.isAuthorized = AuthService.isAuthorized;
                 console.log("login success");
             }, function(errMsg) {
                 console.log("Error in login controller");

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>MEAN Seed</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
 
@@ -26,12 +26,12 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#signup"><i class="fa fa-sign-in"></i> Sign Up Here!!!</a></li>
-                <li><a href="#login"><i class="fa fa-user-plus"></i> Login</a></li>
+                <li ng-show="!currentUser"><a href="#signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up Here!!!</a></li>
                 <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
                 <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
                 <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
-                <li><a href="#/" ng-click="logout()"><i class="fa fa-sign-out"></i> Sign out</a></li>
+                <li ng-show="!currentUser"><a href="#login"><i class="fa fa-sign-in"></i> Login</a></li>
+                <li ng-show="currentUser"><a href="#/" ng-click="logout()"><i class="fa fa-sign-out"></i> Sign out</a></li>
             </ul>
         </div>
     </nav>
@@ -44,7 +44,6 @@
     <!-- this is where content will be injected -->
 
     <div ng-view></div>
-    <p>current user: {{currentUser.userName}}</p>
 
 </div>
 
