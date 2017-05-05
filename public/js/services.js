@@ -44,6 +44,8 @@ angular.module('meanseed')
                     } else {
                         reject(result.data.msg);
                     }
+                }, function (err) {
+                    reject(err.data.msg);
                 });
             });
         };
@@ -57,6 +59,8 @@ angular.module('meanseed')
                     } else {
                         reject(result.data.msg);
                     }
+                }, function (err) {
+                    reject(err.data.msg);
                 });
             });
         };
