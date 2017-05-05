@@ -22,6 +22,16 @@ angular.module('meanseed', ['ngRoute'])
             controller  : 'aboutController'
         })
 
+        // route for the search page
+        .when('/search/:subject', {
+            templateUrl : 'pages/headers/search.html',
+            controller  : 'searchController'
+        })
+        .when('/search', {
+            templateUrl : 'pages/headers/search.html',
+            controller  : 'searchController'
+        })
+
         // route for profile page
         .when('/profile/:userName', {
             templateUrl : 'pages/headers/profile.html',
