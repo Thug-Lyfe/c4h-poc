@@ -16,6 +16,9 @@ var UserSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    tutor: {
+        type: Boolean
     }
 });
 

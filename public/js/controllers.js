@@ -22,6 +22,14 @@ angular.module('meanseed')
         $scope.message = 'Look! I am an about page.';
     })
 
+    .controller('searchController', function($scope, $http) {
+        $scope.message = 'Look! I am an search page.';
+        $http.get('/api/search/profession').then(function(res){
+            $scope.list = res.data;
+        });
+
+    })
+
     .controller('profileController', function($scope, AuthService, $routeParams) {
         $scope.own = false;
         $scope.title = $routeParams.userName + "'s Profile Page";
