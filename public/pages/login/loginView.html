@@ -1,6 +1,9 @@
 <div class="col-md-6 col-md-offset-3">
-    <div ng-show="message!=null" class="alert alert-info">
-        {{message}}
+    <div ng-show="alertText!=null" class="alert alert-info">
+        {{alertText}}
+    </div>
+    <div ng-show="dangerText!=null" class="alert alert-danger">
+        {{dangerText}}
     </div>
     <h2>Login</h2>
     <form name="form" ng-submit="login()" role="form">

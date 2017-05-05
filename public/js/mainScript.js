@@ -23,10 +23,9 @@ angular.module('meanseed', ['ngRoute'])
         })
 
         // route for profile page
-        .when('/profile', {
+        .when('/profile/:userName', {
             templateUrl : 'pages/headers/profile.html',
-            controller  : 'profileController',
-            isLogin: true
+            controller  : 'profileController'
         })
 
         // route for the contact page

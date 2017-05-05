@@ -22,17 +22,23 @@ angular.module('meanseed')
         $scope.message = 'Look! I am an about page.';
     })
 
-    .controller('profileController', function($scope, AuthService) {
-        $scope.message = 'Look! This is your profile. Your username is: ' + $scope.currentUser.userName;
+    .controller('profileController', function($scope, AuthService, $routeParams) {
+        $scope.own = false;
+        $scope.title = $routeParams.userName + "'s Profile Page";
+        if($scope.currentUser != null && $scope.currentUser.userName == $routeParams.userName){
+            $scope.own = true;
+            $scope.message = 'Look! This is your profile!';
+        }
+
     })
 
     .controller('contactController', function($scope) {
         $scope.message = 'Contact us! JK. This is just a demo.';
     })
 
-    .controller('loginViewController', function($scope, AuthService, $location) {
+    .controller('loginViewController', function($scope, AuthService, $location, AUTH_EVENTS) {
         var urlParams = $location.search();
-        $scope.message = urlParams.msg;
+        $scope.alertText = urlParams.msg;
         $scope.user = {
             userName: '',
             password: ''
@@ -45,7 +51,8 @@ angular.module('meanseed')
                 $scope.isAuthorized = AuthService.isAuthorized;
                 console.log("login success");
             }, function(errMsg) {
-                console.log("Error in login controller");
+
+                $scope.dangerText = errMsg
             });
         };
     })
