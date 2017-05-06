@@ -3,6 +3,6 @@
 
     <p>{{ message }}</p>
     <ul>
-        <li ng-repeat="user in list">{{user.userName}}</li>
+        <li ng-repeat="user in list"><a href="#profile/{{user.userName}}">{{user.userName}}</a></li>
     </ul>
 </div>
