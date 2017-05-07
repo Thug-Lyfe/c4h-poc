@@ -4,10 +4,10 @@
 // script.js
 
     // create the module and name it scotchApp
-var scotchApp = angular.module('meanseed', ['ngRoute']);
+angular.module('meanseed', ['ngRoute'])
 
 // create the controller and inject Angular's $scope
-scotchApp.config(function($routeProvider, $locationProvider, $httpProvider) {
+    .config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
 
     // route for the home page
@@ -20,6 +20,22 @@ scotchApp.config(function($routeProvider, $locationProvider, $httpProvider) {
         .when('/about', {
             templateUrl : 'pages/headers/about.html',
             controller  : 'aboutController'
+        })
+
+        // route for the search page
+        .when('/search/:subject', {
+            templateUrl : 'pages/headers/search.html',
+            controller  : 'searchController'
+        })
+        .when('/search', {
+            templateUrl : 'pages/headers/search.html',
+            controller  : 'searchController'
+        })
+
+        // route for profile page
+        .when('/profile/:userName', {
+            templateUrl : 'pages/headers/profile.html',
+            controller  : 'profileController'
         })
 
         // route for the contact page
@@ -38,25 +54,13 @@ scotchApp.config(function($routeProvider, $locationProvider, $httpProvider) {
             controller  : 'registerViewController'
         });
 
-});
-
-
-scotchApp.controller('AppCtrl', function($scope) {
-
-    // create a message to display in our view
-    $scope.message = 'Everyone come and see how good I look!';
-});
-scotchApp.controller('aboutController', function($scope) {
-    $scope.message = 'Look! I am an about page.';
-});
-
-scotchApp.controller('contactController', function($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.';
-});
-scotchApp.controller('loginViewController', function($scope) {
-
-
-});
-scotchApp.controller('registerViewController', function($scope) {
-
+    })
+    .run(function ($rootScope, $location, AuthService, AUTH_EVENTS) {
+    $rootScope.$on('$routeChangeStart', function (event,next, current) {
+        if (!AuthService.isAuthenticated()) {
+            if (next.isLogin) {
+                $location.path('/login').search({msg: "Please login before viewing this page."});
+            }
+        }
+    });
 });

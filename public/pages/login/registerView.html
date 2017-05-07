@@ -1,17 +1,17 @@
 <div class="col-md-6 col-md-offset-3">
     <h2>Register</h2>
-    <form name="form" ng-submit="register()" role="form">
+    <form name="form" ng-submit="signup(user)" role="form">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" ng-model="username" class="form-control" required />
+            <input type="text" name="username" id="username" ng-model="user.userName" class="form-control" required />
         </div>
         <div class="form-group" >
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" ng-model="password" class="form-control" required />
+            <input type="password" name="password" id="password" ng-model="user.password" class="form-control" required />
         </div>
         <div class="form-actions">
-            <button type="submit"  class="btn btn-primary">Register</button>
-            <a href="#login" class="btn btn-link">Cancel</a>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="#/" class="btn btn-link">Cancel</a>
         </div>
     </form>
 </div>
