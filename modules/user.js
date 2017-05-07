@@ -1,6 +1,8 @@
 /**
  * Created by David on 02 May 2017.
  */
+var express = require('express');
+var fs = require('fs');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcryptjs');
@@ -16,7 +18,23 @@ var UserSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    displayName: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    phoneNumber: Number,
+    eMail: String,
+    tutorCheck: Boolean,
+    fag: [String],
+    grade: [String],
+    specialities: [String],
+    profilePic: { data: Buffer, contentType: String },
+    coverPic:  { data: Buffer, contentType: String },
+    userInfo: String,
+    age: Number,
+    zipcode: Number
 });
 
 UserSchema.pre('save', function (next) {
