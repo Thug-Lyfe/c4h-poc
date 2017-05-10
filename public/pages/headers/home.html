@@ -1,5 +1,10 @@
-<div class="jumbotron text-center">
-    <h1>Home Page</h1>
+<div class="bgimg" >
 
-    <p>{{ message }}</p>
+    <form class="mainSearchForm" >
+        <input  type="text" ng-model="keywords" class="input-medium search-query mainSearchForm_input" placeholder="Keywords...">
+        <a type="submit" class="btn btn-primary mainSearchForm_a" ng-click="search()">Search</a>
+    </form>
+
+
+
 </div>

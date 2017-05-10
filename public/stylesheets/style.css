@@ -1,8 +1,38 @@
 body {
-  padding: 50px;
+
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+
+.bgimg{
+  margin-left:Calc(50% - 480px);
+  margin-right:Calc(50% - 480px);
+  height:398px;
+  background-repeat: no-repeat;
+  background-image:url('../pics/cover.jpg');
+}
+
+.mainSearchForm{
+  width:500px;
+  height:98px;
+  background-color:transparent;
+  border:none;
+  margin-left:230px;
+  padding-top:245px;
+}
+
+.mainSearchForm_input{
+  width:100%;
+  margin-bottom:5px;
+  padding:5px 5px 5px 5px;
+}
+
+.mainSearchForm_a{
+  width:100%;
+  border:none
 }
