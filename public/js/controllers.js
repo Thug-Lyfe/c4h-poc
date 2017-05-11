@@ -4,7 +4,7 @@
 angular.module('meanseed')
     .controller('AppCtrl', function($scope, AuthService) {
         // create a message to display in our view
-        $scope.message = 'Everyone come and see how good I look!';
+
         $scope.currentUser = null;
         $scope.isAuthorized = false;
 
@@ -16,6 +16,62 @@ angular.module('meanseed')
             AuthService.logout();
             $scope.setCurrentUser(null);
         }
+
+        $scope.teasers = [
+            {
+            "logo": "fa-calculator",
+            "titel": "Math",
+            "link": "search/something?math"
+        },{
+            "logo": "fa-balance-scale",
+            "titel": "Physics",
+            "link": "search/something?physics"
+        },{
+            "logo": "fa-book",
+            "titel": "History",
+            "link": "search/something?history"
+        },{
+            "logo": "fa-flask",
+            "titel": "Chemistry",
+            "link": "search/something?chemistry"
+        },{
+            "logo": "fa-language",
+            "titel": "English",
+            "link": "search/something?language"
+        },{
+            "logo": "fa-leanpub",
+            "titel": "Danish",
+            "link": "search/something?danish"
+        },{
+            "logo": "fa-sort-alpha-asc",
+            "titel": "Other Languages",
+            "link": "search/something?otherlanguages"
+        },{
+            "logo": "fa-globe",
+            "titel": "Geography",
+            "link": "search/something?geography"
+        },{
+            "logo": "fa-low-vision",
+            "titel": "Religion",
+            "link": "search/something?religion"
+        },{
+            "logo": "fa-handshake-o",
+            "titel": "Social Science",
+            "link": "search/something?socialscience"
+        },{
+            "logo": "fa-bug",
+            "titel": "Biology",
+            "link": "search/something?biology"
+        },{
+            "logo": "fa-music",
+            "titel": "Music",
+            "link": "search/something?music"
+        },{
+            "logo": "fa-bar-chart",
+            "titel": "Statistics",
+            "link": "search/something?statistics"
+        },
+        ];
     })
 
     .controller('aboutController', function($scope) {

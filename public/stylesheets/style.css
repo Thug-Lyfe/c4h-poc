@@ -1,8 +1,58 @@
 body {
-  padding: 50px;
+
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+
+.bgimg{
+  margin-left:Calc(50% - 480px);
+  margin-right:Calc(50% - 480px);
+  height:398px;
+  background-repeat: no-repeat;
+  background-image:url('../pics/cover.jpg');
+}
+
+.mainSearchForm{
+  width:500px;
+  height:98px;
+  background-color:transparent;
+  border:none;
+  margin-left:230px;
+  padding-top:245px;
+}
+
+.mainSearchForm_input{
+  width:100%;
+  margin-bottom:5px;
+  padding:5px 5px 5px 5px;
+}
+
+.mainSearchForm_a{
+  width:100%;
+  border:none
+}
+.main-logo{
+  border: 1px solid white;
+  background-color:#337ab7;
+  height:40px;
+  width:40px;
+  line-height:38px;
+  border-radius:50%;
+  color:#ffffff;
+  font-size:19px;
+}
+.main-logo:hover{
+  background-color:#286090 !important;
+  -webkit-animation: pulsate 2s ease-in-out;
+  -webkit-animation-iteration-count: 1;
+}
+@-webkit-keyframes pulsate {
+  0% {-webkit-transform: scale(1, 1);box-shadow: 0 0 0 #330022;}
+  50% {-webkit-transform: scale(1, 1);box-shadow: 0 0 60px #229999;}
+  100% {-webkit-transform: scale(1, 1);box-shadow: 0 0 0 #229977;}
 }
