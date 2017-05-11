@@ -22,7 +22,7 @@ var UserSchema = new Schema({
     displayName: {
         type: String,
         unique: true,
-        required: true
+        //required: true
     },
     phoneNumber: Number,
     eMail: String,
