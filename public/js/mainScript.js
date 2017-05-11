@@ -38,6 +38,12 @@ angular.module('meanseed', ['ngRoute'])
             controller  : 'profileController'
         })
 
+        // route for profile edit page
+        .when('/profile/:userName/edit', {
+            templateUrl : 'pages/headers/profileEdit.html',
+            controller  : 'profileEditController'
+        })
+
         // route for the contact page
         .when('/contact', {
             templateUrl : 'pages/headers/contact.html',
@@ -55,12 +61,16 @@ angular.module('meanseed', ['ngRoute'])
         });
 
     })
-    .run(function ($rootScope, $location, AuthService, AUTH_EVENTS) {
+    .run(function ($rootScope, $location, AuthService, AUTH_EVENTS, $routeParams) {
     $rootScope.$on('$routeChangeStart', function (event,next, current) {
         if (!AuthService.isAuthenticated()) {
             if (next.isLogin) {
                 $location.path('/login').search({msg: "Please login before viewing this page."});
+                if ($routeParams.userName != AuthService.userName()){
+                    $location.path('/login').search({msg: "Please login before viewing this page."});
+                }
             }
         }
+
     });
 });

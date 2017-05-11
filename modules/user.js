@@ -30,8 +30,8 @@ var UserSchema = new Schema({
     fag: [String],
     grade: [String],
     specialities: [String],
-    profilePic: { data: Buffer, contentType: String },
-    coverPic:  { data: Buffer, contentType: String },
+    profilePic: String,
+    coverPic:  String,
     userInfo: String,
     age: Number,
     zipcode: Number
