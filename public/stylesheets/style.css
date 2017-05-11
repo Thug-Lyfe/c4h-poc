@@ -36,3 +36,23 @@ a {
   width:100%;
   border:none
 }
+.main-logo{
+  border: 1px solid white;
+  background-color:#337ab7;
+  height:40px;
+  width:40px;
+  line-height:38px;
+  border-radius:50%;
+  color:#ffffff;
+  font-size:19px;
+}
+.main-logo:hover{
+  background-color:#286090 !important;
+  -webkit-animation: pulsate 2s ease-in-out;
+  -webkit-animation-iteration-count: 1;
+}
+@-webkit-keyframes pulsate {
+  0% {-webkit-transform: scale(1, 1);box-shadow: 0 0 0 #330022;}
+  50% {-webkit-transform: scale(1, 1);box-shadow: 0 0 60px #229999;}
+  100% {-webkit-transform: scale(1, 1);box-shadow: 0 0 0 #229977;}
+}
