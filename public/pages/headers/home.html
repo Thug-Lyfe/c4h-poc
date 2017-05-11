@@ -1,5 +1,17 @@
-<div class="jumbotron text-center">
-    <h1>Home Page</h1>
+<div class="bgimg" >
 
-    <p>{{ message }}</p>
+    <form class="mainSearchForm" >
+        <input  type="text" ng-model="keywords" class="input-medium search-query mainSearchForm_input" placeholder="Keywords...">
+        <a type="submit" class="btn btn-primary mainSearchForm_a" ng-click="search()">Search</a>
+    </form>
+
+</div>
+<div ng-repeat="tease in teasers">
+<div  style="float:left;text-align:center;width:20%;margin:20px 0 20px 4%">
+    <a href="{{tease.link}}"><i class="fa {{tease.logo}} main-logo" aria-hidden="true"></i></a>
+    <h3 >{{tease.titel}}</h3>
+    <a style="width:100%" class="btn btn-primary" href="{{tease.link}}">find more ></a>
+</div>
+
+
 </div>
