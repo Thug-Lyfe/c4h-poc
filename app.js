@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var passport = require('passport');
 var jwt = require('jwt-simple');
+var cors = require("cors");
 
 var api = require('./routes/api');
 var users = require('./routes/users');
@@ -28,10 +29,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 var passportConfig = require("./config/passport");
 passportConfig(passport);
 
-app.use(function(req, res, next) {
+// cross origin
+/*app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
-});
+});*/
+app.use(cors());
 
 // only authorized users can access /api/ endpoint
 app.use('/secure', function(req, res, next) {

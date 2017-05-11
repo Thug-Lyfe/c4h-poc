@@ -16,7 +16,7 @@ router.get("/hellos",function(req,res){
 });
 
 router.get("/search/profession",function (req,res) {
-    User.find({}).select('userName tutor')
+    User.find({}).select('userName tutor profilePic')
         .exec(function (err, list) {
             if(err){
                 res.send(err);

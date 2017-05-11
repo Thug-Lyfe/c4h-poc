@@ -24,7 +24,12 @@ angular.module('meanseed')
         function useCredentials(token) {
             isAuthenticated = true;
             authToken = token;
-
+            var encodedProfile = authToken.split('.')[1];
+            console.log(":::" + encodedProfile);
+            var profile = JSON.parse(url_base64_decode(encodedProfile));
+            console.log(profile);
+            userName = profile.sub;
+            console.log(userName);
             // Set the token as header for your requests!
             $http.defaults.headers.common.Authorization = authToken;
         }
@@ -32,8 +37,26 @@ angular.module('meanseed')
         function destroyUserCredentials() {
             authToken = undefined;
             isAuthenticated = false;
+            userName = undefined;
             $http.defaults.headers.common.Authorization = undefined;
             window.localStorage.removeItem(LOCAL_TOKEN_KEY);
+        }
+
+        function url_base64_decode(str) {
+            var output = str.replace('-', '+').replace('_', '/');
+            switch (output.length % 4) {
+                case 0:
+                    break;
+                case 2:
+                    output += '==';
+                    break;
+                case 3:
+                    output += '=';
+                    break;
+                default:
+                    throw 'Illegal base64url string!';
+            }
+            return window.atob(output); //polifyll https://github.com/davidchambers/Base64.js
         }
 
         var register = function(user) {
@@ -76,6 +99,7 @@ angular.module('meanseed')
             register: register,
             logout: logout,
             isAuthenticated: function() {return isAuthenticated;},
+            userName: function () {return userName;}
         };
     })
 
