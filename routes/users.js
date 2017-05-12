@@ -4,8 +4,19 @@ var User = require('../modules/user'); // get the mongoose model
 var jwt = require('jwt-simple');
 var multer = require('multer');
 var passport = require("passport");
+var path = require('path');
 
 const jwtConfig = require("../config/jwtConfig").jwtConfig;
+
+var storage = multer.diskStorage({
+    destination: './public/images/uploads/',
+    filename: function (req, file, cb) {
+        cb(null, file.originalname.replace(path.extname(file.originalname), "") + '-' + Date.now() + path.extname(file.originalname))
+    }
+});
+
+var m = multer({ storage: storage });
+var upload = m.single('file');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -81,30 +92,41 @@ router.put('/editprofile/:id', function (req, res) {
     }
 });
 
-router.post('/upload/profilepic',passport.authenticate('jwt', { session: false}), multer({dest: '../public/images/uploads'}).single('upl'), function(req, res) {
-    var file = req.file;
+router.post('/upload/profilepic', function(req, res) {
 
-    var token = getToken(req.headers);
-    if (token) {
-        var decoded = jwt.decode(token, jwtConfig.secret);
-        User.findOneAndUpdate(
-            {userName: decoded.sub},
-            {profilePic: "tets"},
-            {new: true},
-            function(err, user) {
-                if (err) throw err;
+    upload(req, res, function (err) {
+        if(err){
+            console.log(err);
+        }
+        else {
+            var file = req.file;
+            if(!file){
+                return res.status(403).send({success: false, msg: 'No image provided.'});
+            }
+            var token = getToken(req.headers);
+            if (token) {
+                var decoded = jwt.decode(token, jwtConfig.secret);
+                User.findOneAndUpdate(
+                    {userName: decoded.sub},
+                    {profilePic: file.filename},
+                    {new: true},
+                    function(err, user) {
+                        if (err) throw err;
 
-                if (!user) {
-                    return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
-                } else {
-                    console.log("uploaded");
-                    console.log(req.file);
-                    res.json({success: true, msg: 'Profile picture uploaded.'});
-                }
-        });
-    } else {
-        return res.status(403).send({success: false, msg: 'No token provided.'});
-    }
+                        if (!user) {
+                            return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
+                        } else {
+                            res.json({success: true, msg: 'Profile picture uploaded.'});
+                        }
+                    });
+            } else {
+                return res.status(403).send({success: false, msg: 'No token provided.'});
+            }
+        }
+
+    });
+
+
 });
 
 getToken = function (headers) {
