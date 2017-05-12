@@ -79,7 +79,7 @@ angular.module('meanseed')
     })
 
     .controller('searchController', function($scope, $http) {
-        $scope.message = 'Look! I am an search page.';
+        $scope.message = 'Motherfucking search page.';
         $http.get('/api/search/profession').then(function(res){
             $scope.list = res.data;
         });
@@ -96,28 +96,16 @@ angular.module('meanseed')
 
     })
 
-    .controller('profileEditController', function($scope, AuthService, $routeParams, $http) {
-        $scope.upload = function () {
+    .controller('profileEditController', function($scope, AuthService, $routeParams, $http, fileUpload) {
+        $scope.uploadFile = function(){
+            var file = $scope.myFile;
 
-            var file = $scope.file;
-            var fd = new FormData();
-            fd.append('file', file);
+            console.log('file is ' );
+            console.dir(file);
 
-            $http.post('user/upload/profilepic', fd, {
-                headers: {'Content-Type': undefined}
-            }).then(function (res) {
-                console.log("success");
-            }, function (err) {
-                console.log(err);
-            });
+            var uploadUrl = "/user/upload/profilepic";
+            fileUpload.uploadFileToUrl(file, uploadUrl);
         };
-
-        $scope.own = false;
-        $scope.title = $routeParams.userName + "'s Profile Page";
-        if($scope.currentUser != null && $scope.currentUser.userName == $routeParams.userName){
-            $scope.own = true;
-            $scope.message = 'Look! This is your profile!';
-        }
 
     })
 

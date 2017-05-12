@@ -103,6 +103,24 @@ angular.module('meanseed')
         };
     })
 
+    .service('fileUpload', function ($http) {
+        this.uploadFileToUrl = function(file, uploadUrl){
+            var fd = new FormData();
+            fd.append('file', file);
+
+            $http.post(uploadUrl, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+
+                .success(function(){
+                })
+
+                .error(function(){
+                });
+        }
+    })
+
     .factory('AuthInterceptor', function ($rootScope, $q, AUTH_EVENTS) {
         return {
             responseError: function (response) {
