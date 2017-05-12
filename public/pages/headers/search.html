@@ -5,13 +5,41 @@
 </div>
 <div class="container">
 
+    <div class="input-group">
+        <span class="input-group-addon" title="Subject" id="subjectLabel">Subject</span>
+
+        <select id="searchbygenerals_currency" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.subject">
+            <option value="math">Mathematics</option>
+            <option value="eng">English</option>
+        </select>
+
+        <span class="input-group-addon" title="Level" id="levelLabel">Level</span>
+
+        <select id="searchbygenerals_currency3" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.lvl">
+            <option value="7">7th Grade</option>
+            <option value="9">9th Grade</option>
+        </select>
+
+        <span class="input-group-addon" title="Level" id="levelLabel3">Level</span>
+
+        <select id="searchbygenerals_currency2" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.smth">
+            <option value="1">HUF</option>
+            <option value="2">EUR</option>
+        </select>
+        <span class="input-group-addon">Text</span>
+        <input type="text" id="searchtext" name="searchtext" class="form-control" ng-model="filterstuff.userName">
+
+    </div>
+
+    {{filterstuff}}
+    <br>
     <hgroup class="mb20">
         <h1>Search Results</h1>
         <h2 class="lead"><strong class="text-danger">3</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>
     </hgroup>
 
     <section class="col-xs-12 col-sm-6 col-md-12">
-        <article ng-repeat="user in list" class="search-result row">
+        <article ng-repeat="user in list | filter:filterstuff" class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <a href="#" title="Lorem ipsum" class="thumbnail"><img src="/images/uploads/{{user.profilePic}}" alt="Lorem ipsum" /></a>
             </div>
