@@ -95,7 +95,7 @@ angular.module('meanseed')
         }
 
         $http.get('/api/profile/'+ $routeParams.displayName).then(function(res){
-            $scope.profile = res.data;
+            $scope.profile = res.data[0];
         });
 
     })
