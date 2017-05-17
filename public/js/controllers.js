@@ -80,7 +80,7 @@ angular.module('meanseed')
 
     .controller('searchController', function($scope, $http) {
         $scope.message = 'Motherfucking search page.';
-        $http.get('/api/search/profession').then(function(res){
+        $http.get('/api/search').then(function(res){
             $scope.list = res.data;
         });
 

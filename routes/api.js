@@ -11,11 +11,18 @@ router.get("/names",function(req,res){
     res.json([{name: "Peter"}, {name: "Kurt"},{name: "Hanne"}]);
 });
 
-router.get("/hellos",function(req,res){
-    res.json([{msg: "Hello World" }, {msg: "Hello all"},{msg: "Hello guys"}]);
+router.get("/profile/:userName",function(req,res){
+    User.find({userName: req.params.userName})
+        .exec(function (err, list) {
+        if(err){
+            res.send(err);
+        }else {
+            res.json(list);
+        }
+    })
 });
 
-router.get("/search/profession",function (req,res) {
+router.get("/search",function (req,res) {
     User.find({}).select('userName tutor profilePic')
         .exec(function (err, list) {
             if(err){
