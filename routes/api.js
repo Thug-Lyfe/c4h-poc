@@ -11,19 +11,19 @@ router.get("/names",function(req,res){
     res.json([{name: "Peter"}, {name: "Kurt"},{name: "Hanne"}]);
 });
 
-router.get("/profile/:userName",function(req,res){
-    User.find({userName: req.params.userName})
-        .exec(function (err, list) {
+router.get("/profile/:displayName",function(req,res){
+    User.find({displayName: req.params.displayName}).select('-password')
+        .exec(function (err, user) {
         if(err){
             res.send(err);
         }else {
-            res.json(list);
+            res.json(user);
         }
     })
 });
 
 router.get("/search",function (req,res) {
-    User.find({}).select('userName tutor profilePic')
+    User.find({}).select('-password')
         .exec(function (err, list) {
             if(err){
                 res.send(err);
