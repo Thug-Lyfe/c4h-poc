@@ -1,5 +1,31 @@
-<form ng-submit="uploadFile()" enctype="multipart/form-data">
-    Select an image to upload:
-    <input type="file" name="img" file-model="myFile">
-    <button type="submit">Upload Image</button>
-</form>
+
+<div class="col-md-6 col-md-offset-3">
+    <h2>Edit Profile</h2>
+    <form name="form" ng-submit="editProfile()" role="form">
+        <div class="form-group">
+            <label for="userInfo">User Information</label>
+            <textarea name="userInfo" id="userInfo" ng-model="edittedUser.userInfo" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" ng-model="edittedUser.age" class="form-control" />
+        </div>
+        <div class="form-group" >
+            <label for="phone">Phone Number</label>
+            <input type="number" name="phone" id="phone" ng-model="edittedUser.phoneNumber" class="form-control" />
+        </div>
+        <div class="form-group" >
+            <label for="zipcode">Zipcode</label>
+            <input type="number" name="zipcode" id="zipcode" ng-model="edittedUser.zipcode" class="form-control" />
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="#/" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+    <form ng-submit="uploadFile()" enctype="multipart/form-data">
+        Select an image to upload:
+        <input type="file" name="img" file-model="myFile">
+        <button type="submit">Upload Image</button>
+    </form>
+</div>

@@ -33,7 +33,7 @@ angular.module('meanseed', ['ngRoute'])
         })
 
         // route for profile page
-        .when('/profile/:userName', {
+        .when('/profile/:displayName', {
             templateUrl : 'pages/headers/profile.html',
             controller  : 'profileController'
         })

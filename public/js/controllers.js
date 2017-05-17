@@ -86,13 +86,17 @@ angular.module('meanseed')
 
     })
 
-    .controller('profileController', function($scope, AuthService, $routeParams) {
+    .controller('profileController', function($scope, AuthService, $routeParams, $http) {
         $scope.own = false;
-        $scope.title = $routeParams.userName + "'s Profile Page";
+        $scope.title = $routeParams.displayName + "'s Profile Page";
         if($scope.currentUser != null && $scope.currentUser.userName == $routeParams.userName){
             $scope.own = true;
             $scope.message = 'Look! This is your profile!';
         }
+
+        $http.get('/api/profile/'+ $routeParams.displayName).then(function(res){
+            $scope.profile = res.data;
+        });
 
     })
 
@@ -106,6 +110,13 @@ angular.module('meanseed')
             var uploadUrl = "/user/upload/profilepic";
             fileUpload.uploadFileToUrl(file, uploadUrl);
         };
+        $scope.edittedUser;
+        $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
+            $scope.edittedUser = res.data;
+        })
+        $scope.editProfile = function(){
+
+        }
 
     })
 
@@ -137,7 +148,8 @@ angular.module('meanseed')
     .controller('registerViewController', function($scope, AuthService, $location) {
         $scope.user = {
             userName: '',
-            password: ''
+            password: '',
+            displayName: ''
         };
 
         $scope.signup = function(user) {
