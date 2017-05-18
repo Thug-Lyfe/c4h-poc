@@ -37,7 +37,7 @@
                 <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
                 <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
                 <li ng-show="!currentUser"><a href="#login"><i class="fa fa-sign-in"></i> Login</a></li>
-                <li ng-show="currentUser"><a href="#profile/{{currentUser.userName}}"><i class="fa fa-user"></i> My Profile</a></li>
+                <li ng-show="currentUser"><a href="#profile/{{currentUser.displayName}}"><i class="fa fa-user"></i> My Profile</a></li>
                 <li ng-show="currentUser"><a href="#/" ng-click="logout()"><i class="fa fa-sign-out"></i> Sign out</a></li>
             </ul>
         </div>

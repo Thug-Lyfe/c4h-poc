@@ -24,18 +24,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res) {
-    if (!req.body.userName || !req.body.password || !req.body.displayName) {
-        res.json({success: false, msg: 'Please pass name and password.'});
+    if (!req.body.email || !req.body.password || !req.body.displayName) {
+        res.json({success: false, msg: 'Please pass email and password.'});
     } else {
         var newUser = new User({
-            userName: req.body.userName,
+            email: req.body.email,
             password: req.body.password,
             displayName: req.body.displayName
         });
         // save the user
         newUser.save(function(err) {
             if (err) {
-                return res.json({success: false, msg: 'Username/Displayname already exists.', err: err});
+                return res.json({success: false, msg: 'Email/Displayname already exists.', err: err});
             }
             res.json({success: true, msg: 'Successful created new user.'});
         });
@@ -44,7 +44,7 @@ router.post('/signup', function(req, res) {
 
 router.post('/authenticate', function(req, res) {
     User.findOne({
-        userName: req.body.userName
+        email: req.body.email
     }, function (err, user) {
         if (err) throw err;
         if (!user) {
@@ -60,8 +60,9 @@ router.post('/authenticate', function(req, res) {
                         iss: jwtConfig.issuer,
                         iat: iat,
                         exp: exp,
-                        sub: user.userName
-                    }
+                        sub: user.email,
+                        usr: user.displayName
+                    };
                     var token = jwt.encode(payload, jwtConfig.secret);
                     // return the information including token as JSON
                     res.json({user: user, token: 'JWT ' + token});
@@ -73,23 +74,21 @@ router.post('/authenticate', function(req, res) {
     });
 });
 
-router.put('/editprofile/:id', function (req, res) {
+router.put('/editprofile', function (req, res) {
     var token = getToken(req.headers);
-    if(token) {
-        var decoded = jwt.decode - (token, jwtConfig.secret);
-        if (decoded.userName == req.params.userName) {
-            User.findOneAndUpdate({userName: decoded.userName}, req.body, {new: true}, function (err, user) {
-                if (err) {
-                    res.send(err);
+    if (token) {
+        var decoded = jwt.decode(token, jwtConfig.secret);
+        User.findOneAndUpdate({email: decoded.sub}, req.body, {new: true},
+            function(err, user) {
+                if (err) throw err;
+                if (!user) {
+                    return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
                 } else {
-                    res.json(user);
+                    res.json({success: true, msg: 'Profile saved for: ' + user.displayName + '!'});
                 }
-            })
-        } else {
-            res.send("Log on to your own account bitch");
-        }
+        });
     } else {
-        res.status(401).send({msg: 'Login to edit profile.'});
+        return res.status(403).send({success: false, msg: 'No token provided.'});
     }
 });
 
@@ -108,7 +107,7 @@ router.post('/upload/profilepic', function(req, res) {
             if (token) {
                 var decoded = jwt.decode(token, jwtConfig.secret);
                 User.findOneAndUpdate(
-                    {userName: decoded.sub},
+                    {email: decoded.sub},
                     {profilePic: file.filename},
                     {new: true},
                     function(err, user) {
@@ -145,7 +144,7 @@ router.post('/upload/coverpic', function(req, res) {
             if (token) {
                 var decoded = jwt.decode(token, jwtConfig.secret);
                 User.findOneAndUpdate(
-                    {userName: decoded.sub},
+                    {email: decoded.sub},
                     {coverPic: file.filename},
                     {new: true},
                     function(err, user) {

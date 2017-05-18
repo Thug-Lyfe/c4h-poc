@@ -10,7 +10,7 @@ var bcrypt = require('bcryptjs');
 
 // set up a mongoose model
 var UserSchema = new Schema({
-    userName: {
+    email: {
         type: String,
         unique: true,
         required: true
@@ -25,7 +25,6 @@ var UserSchema = new Schema({
         required: true
     },
     phoneNumber: Number,
-    eMail: String,
     tutorCheck: Boolean,
     fag: [String],
     grade: [String],

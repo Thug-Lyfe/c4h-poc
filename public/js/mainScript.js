@@ -39,7 +39,7 @@ angular.module('meanseed', ['ngRoute'])
         })
 
         // route for profile edit page
-        .when('/profile/:userName/edit', {
+        .when('/profile/:displayName/edit', {
             templateUrl : 'pages/headers/profileEdit.html',
             controller  : 'profileEditController'
         })
@@ -66,7 +66,7 @@ angular.module('meanseed', ['ngRoute'])
         if (!AuthService.isAuthenticated()) {
             if (next.isLogin) {
                 $location.path('/login').search({msg: "Please login before viewing this page."});
-                if ($routeParams.userName != AuthService.userName()){
+                if ($routeParams.displayName != AuthService.user()){
                     $location.path('/login').search({msg: "Please login before viewing this page."});
                 }
             }
