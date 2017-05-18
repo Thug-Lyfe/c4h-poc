@@ -89,7 +89,7 @@ angular.module('meanseed')
     .controller('profileController', function($scope, AuthService, $routeParams, $http) {
         $scope.own = false;
         $scope.title = $routeParams.displayName + "'s Profile Page";
-        if($scope.currentUser != null && $scope.currentUser.userName == $routeParams.userName){
+        if($scope.currentUser != null && $scope.currentUser.displayName == $routeParams.displayName){
             $scope.own = true;
             $scope.message = 'Look! This is your profile!';
         }
@@ -113,7 +113,7 @@ angular.module('meanseed')
         $scope.edittedUser;
         $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
             $scope.edittedUser = res.data;
-        })
+        });
         $scope.editProfile = function(){
 
         }
@@ -128,7 +128,7 @@ angular.module('meanseed')
         var urlParams = $location.search();
         $scope.alertText = urlParams.msg;
         $scope.user = {
-            userName: '',
+            email: '',
             password: ''
         };
 
@@ -147,7 +147,7 @@ angular.module('meanseed')
 
     .controller('registerViewController', function($scope, AuthService, $location) {
         $scope.user = {
-            userName: '',
+            email: '',
             password: '',
             displayName: ''
         };

@@ -7,7 +7,7 @@ angular.module('meanseed')
         var LOCAL_TOKEN_KEY = 'yourTokenKey';
         var isAuthenticated = false;
         var authToken;
-        var userName;
+        var user;
 
         function loadUserCredentials() {
             var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
@@ -28,8 +28,7 @@ angular.module('meanseed')
             console.log(":::" + encodedProfile);
             var profile = JSON.parse(url_base64_decode(encodedProfile));
             console.log(profile);
-            userName = profile.sub;
-            console.log(userName);
+            user = profile.sub;
             // Set the token as header for your requests!
             $http.defaults.headers.common.Authorization = authToken;
         }
@@ -37,7 +36,7 @@ angular.module('meanseed')
         function destroyUserCredentials() {
             authToken = undefined;
             isAuthenticated = false;
-            userName = undefined;
+            user = undefined;
             $http.defaults.headers.common.Authorization = undefined;
             window.localStorage.removeItem(LOCAL_TOKEN_KEY);
         }
@@ -99,7 +98,7 @@ angular.module('meanseed')
             register: register,
             logout: logout,
             isAuthenticated: function() {return isAuthenticated;},
-            userName: function () {return userName;}
+            user: function () {return user;}
         };
     })
 

@@ -27,7 +27,7 @@
             <option value="2">EUR</option>
         </select>
         <span class="input-group-addon">Text</span>
-        <input type="text" id="searchtext" name="searchtext" class="form-control" ng-model="filterstuff.userName">
+        <input type="text" id="searchtext" name="searchtext" class="form-control" ng-model="filterstuff.displayName">
 
     </div>
 
@@ -45,13 +45,13 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                 <ul class="meta-search">
-                    <li><i class="fa fa-calendar"></i> <span>01/11/2014</span></li>
+                    <li><i class="fa fa-envelope-o"></i> <span>{{user.email}}</span></li>
                     <li><i class="fa fa-clock-o"></i> <span>10:13 am</span></li>
                     <li><i class="fa fa-tags"></i> <span>Sport</span></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#profile/{{user.userName}}" title="">{{user.userName}}</a></h3>
+                <h3><a href="#profile/{{user.displayName}}" title="">{{user.displayName}}</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
                 <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
             </div>
