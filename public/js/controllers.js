@@ -113,10 +113,21 @@ angular.module('meanseed')
         $scope.edittedUser;
         $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
             $scope.edittedUser = res.data;
-        });
-        $scope.editProfile = function(){
 
-        }
+            $scope.editProfile = function(){
+
+                $http.post('/user/editprofile', $scope.edittedUser).then(function(result) {
+                    if (result.data.success) {
+                        resolve(result.data.msg);
+                    } else {
+                        reject(result.data.msg);
+                    }
+                }, function (err) {
+                    reject(err.data.msg);
+                });
+            }
+
+        });
 
     })
 

@@ -18,11 +18,6 @@ var storage = multer.diskStorage({
 var m = multer({ storage: storage });
 var upload = m.single('file');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
-});
-
 router.post('/signup', function(req, res) {
     if (!req.body.email || !req.body.password || !req.body.displayName) {
         res.json({success: false, msg: 'Please pass email and password.'});
@@ -108,7 +103,7 @@ router.post('/upload/profilepic', function(req, res) {
                 var decoded = jwt.decode(token, jwtConfig.secret);
                 User.findOneAndUpdate(
                     {email: decoded.sub},
-                    {profilePic: file.filename},
+                    {profilePic: "/images/uploads/" + file.filename},
                     {new: true},
                     function(err, user) {
                         if (err) throw err;

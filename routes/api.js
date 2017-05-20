@@ -22,6 +22,7 @@ router.get("/profile/:displayName",function(req,res){
     })
 });
 
+
 router.get("/search",function (req,res) {
     User.find({}).select('-password')
         .exec(function (err, list) {

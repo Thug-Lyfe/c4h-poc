@@ -58,7 +58,8 @@ angular.module('meanseed', ['ngRoute'])
         .when('/signup', {
             templateUrl : 'pages/login/registerView.html',
             controller  : 'registerViewController'
-        });
+        })
+        .otherwise({ redirectTo: '/' });
 
     })
     .run(function ($rootScope, $location, AuthService, AUTH_EVENTS, $routeParams) {
