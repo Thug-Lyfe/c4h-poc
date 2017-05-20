@@ -1,7 +1,7 @@
 <div class="container">
     <div class="fb-profile">
-        <img align="left" class="fb-image-lg" src="/images/uploads/{{profile.coverPic}}"/>
-        <img align="left" class="fb-image-profile thumbnail" src="/images/uploads/{{profile.profilePic}}"/>
+        <img align="left" class="fb-image-lg" src="{{profile.coverPic}}"/>
+        <img align="left" class="fb-image-profile thumbnail" src="{{profile.profilePic}}"/>
         <div class="fb-profile-text">
             <h1>{{profile.displayName}}</h1>
             <p>{{profile.userInfo}}</p>
@@ -9,7 +9,7 @@
     </div>
 </div>
 
-
+<a href="#profile/{{profile.displayName}}/edit">edit</a>
 <div class="jumbotron text-center">
     <h1>{{ title }}</h1>
 
