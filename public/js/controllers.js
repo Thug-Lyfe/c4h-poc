@@ -101,7 +101,7 @@ angular.module('meanseed')
     })
 
     .controller('profileEditController', function($scope, AuthService, $routeParams, $http, fileUpload) {
-        $scope.uploadFile = function(){
+        $scope.uploadProfilePic = function(){
             var file = $scope.myFile;
 
             console.log('file is ' );
@@ -110,20 +110,29 @@ angular.module('meanseed')
             var uploadUrl = "/user/upload/profilepic";
             fileUpload.uploadFileToUrl(file, uploadUrl);
         };
-        $scope.edittedUser;
+        $scope.uploadCoverPic = function(){
+            var file = $scope.myFile;
+
+            console.log('file is ' );
+            console.dir(file);
+
+            var uploadUrl = "/user/upload/coverpic";
+            fileUpload.uploadFileToUrl(file, uploadUrl);
+        };
         $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
-            $scope.edittedUser = res.data;
+            $scope.edittedUser = res.data[0];
 
             $scope.editProfile = function(){
 
-                $http.post('/user/editprofile', $scope.edittedUser).then(function(result) {
-                    if (result.data.success) {
-                        resolve(result.data.msg);
+                $http.put('/user/editprofile', $scope.edittedUser).then(function(res) {
+                    if (res.data.success) {
+                        console.log(res.data.msg);
+
                     } else {
-                        reject(result.data.msg);
+                        console.log(res.data.msg);
                     }
                 }, function (err) {
-                    reject(err.data.msg);
+                    console.log(err.data.msg);
                 });
             }
 

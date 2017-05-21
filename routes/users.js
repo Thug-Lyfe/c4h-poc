@@ -79,7 +79,8 @@ router.put('/editprofile', function (req, res) {
                 if (!user) {
                     return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
                 } else {
-                    res.json({success: true, msg: 'Profile saved for: ' + user.displayName + '!'});
+                    res.json({success: true, msg: 'Profile saved for: ' + req.body.displayName + '!'});
+                    console.log(req.body);
                 }
         });
     } else {
@@ -140,7 +141,7 @@ router.post('/upload/coverpic', function(req, res) {
                 var decoded = jwt.decode(token, jwtConfig.secret);
                 User.findOneAndUpdate(
                     {email: decoded.sub},
-                    {coverPic: file.filename},
+                    {coverPic: "/images/uploads/" + file.filename},
                     {new: true},
                     function(err, user) {
                         if (err) throw err;
@@ -148,7 +149,7 @@ router.post('/upload/coverpic', function(req, res) {
                         if (!user) {
                             return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
                         } else {
-                            res.json({success: true, msg: 'Cover picture uploaded.'});
+                            res.json({success: true, msg: 'Profile picture uploaded.'});
                         }
                     });
             } else {
