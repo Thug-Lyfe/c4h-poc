@@ -2,7 +2,12 @@ body {
 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+.navbar_cus{
+    margin: 2px 0 0 0;
+    border:none;
+    background-color: white;
+    height: 54px;
+}
 a {
   color: #00B7FF;
 }
@@ -20,18 +25,40 @@ a {
   background-position: center;
 
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+
+
+footer {
+    color: white;
+    bottom: 0;
+    width: 100%;
+    background-color: #00212c;
+    position: relative;
+    left: 0;
+    overflow:hidden;
+    padding: 20px 20px 20px 20px;
 }
-.footer_links {
-  -webkit-columns: 100px 3; /* Chrome, Safari, Opera */
-  -moz-columns: 100px 3; /* Firefox */
-  columns: 100px 3;
+footer ul{
+    width:400px;
+    list-style-type: none;
+    margin: 5px 5px 5px 5px;
+}
+.footer_item li{
+    border-bottom: 1px solid #e7e6e6;
+}
+footer li {
+    display:block;
+    padding:10px 10px 10px 12px;
+    position: relative;
+}
+.footer_parts {
+    width:30%;
+    margin: 15px 15px 0 10%;
+    display:inline-block;
+
+}
+#main{
+    min-height: 800px;
+    height:100%;
 }
 .mainSearchForm{
   width:500px;
