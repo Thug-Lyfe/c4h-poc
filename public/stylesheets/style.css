@@ -8,13 +8,17 @@ a {
 }
 
 
-
+.bgcolor{
+  /*background: linear-gradient(rgb(71,113,153), rgb(96,144,184));*/
+  background: linear-gradient(to bottom right ,rgb(0,67,135) 5%, rgb(3,160,227) 45%, rgb(3,160,227) 65%,rgb(0,67,135)) 95%;
+}
 .bgimg{
-  margin-left:Calc(50% - 480px);
-  margin-right:Calc(50% - 480px);
   height:398px;
   background-repeat: no-repeat;
-  background-image:url('../pics/cover.jpg');
+  background-image:url('../pics/cover_v2.png');
+  background-size: 889px 250px;
+  background-position: center;
+
 }
 
 .mainSearchForm{
@@ -22,8 +26,9 @@ a {
   height:98px;
   background-color:transparent;
   border:none;
-  margin-left:230px;
-  padding-top:245px;
+  margin-left:50%;
+  padding-top:270px;
+  transform:translateX(-50%);
 }
 
 .mainSearchForm_input{
