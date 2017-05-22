@@ -94,6 +94,11 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
   width: 20%;
 }
 
+.fb-image-lg
+{
+  height: 400px;
+}
+
 @media (max-width:768px)
 {
   .fb-profile-text>h1{

@@ -86,11 +86,16 @@ angular.module('meanseed')
 
     })
 
-    .controller('profileController', function($scope, AuthService, $routeParams, $http) {
+    .controller('profileController', function($scope, AuthService, $routeParams, $http, $location) {
         $scope.own = false;
         $scope.title = $routeParams.displayName + "'s Profile Page";
+        $scope.editProfile = function () {
+            //window.location = "#/profile/"+ $scope.currentUser.displayName + "/edit";
+            $location.path("/profile/"+ $scope.currentUser.displayName + "/edit");
+        };
         if($scope.currentUser != null && $scope.currentUser.displayName == $routeParams.displayName){
             $scope.own = true;
+
             $scope.message = 'Look! This is your profile!';
         }
 

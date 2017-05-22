@@ -4,12 +4,16 @@
         <img align="left" class="fb-image-profile thumbnail" src="{{profile.profilePic}}"/>
         <div class="fb-profile-text">
             <h1>{{profile.displayName}}</h1>
+
             <p>{{profile.userInfo}}</p>
         </div>
+        <button ng-click="editProfile()" type="button" class="btn btn-default btn-md">
+            <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+        </button>
     </div>
 </div>
 
-<a href="#profile/{{profile.displayName}}/edit">edit</a>
+
 <div class="jumbotron text-center">
     <h1>{{ title }}</h1>
 
