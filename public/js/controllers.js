@@ -82,6 +82,10 @@ angular.module('meanseed')
         $scope.message = 'Motherfucking search page.';
         $http.get('/api/search').then(function(res){
             $scope.list = res.data;
+
+            $scope.resetSearch = function () {
+                $scope.filterstuff = {};
+            }
         });
 
     })
