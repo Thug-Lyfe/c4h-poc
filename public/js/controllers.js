@@ -162,6 +162,7 @@ angular.module('meanseed')
 
         });
 
+
     })
 
     .controller('contactController', function($scope) {
