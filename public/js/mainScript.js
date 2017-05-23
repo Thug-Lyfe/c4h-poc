@@ -4,7 +4,7 @@
 // script.js
 
     // create the module and name it scotchApp
-angular.module('meanseed', ['ngRoute'])
+angular.module('meanseed', ['ngRoute','ngAnimate'])
 
 // create the controller and inject Angular's $scope
     .config(function($routeProvider, $locationProvider, $httpProvider) {

@@ -6,6 +6,11 @@
             <label for="userInfo">User Information</label>
             <textarea name="userInfo" id="userInfo" ng-model="edittedUser.userInfo" class="form-control"></textarea>
         </div>
+        <div class="form-group" >
+            <label for="myFile">Select an image for your cover photo:</label>
+            <input type="file" name="img" id="myFile" file-model="myFile" class="form-control">
+        </div>
+
         <div class="form-group">
             <label for="age">Age</label>
             <input type="number" name="age" id="age" ng-model="edittedUser.age" class="form-control" />
@@ -18,12 +23,29 @@
             <label for="zipcode">Zipcode</label>
             <input type="number" name="zipcode" id="zipcode" ng-model="edittedUser.zipcode" class="form-control" />
         </div>
+        <div class="form-group" >
+            <label for="myFileProfile">Select an image for your profile picture:</label>
+            <input type="file" name="img" id="myFileProfile" file-model="myFileProfile" class="form-control">
+        </div>
+
+
+
+        <div class="form-group" >
+            <label for="tutorCheck">Do you wan't to be a Tutor? check this box to show up on the search results</label>
+            <input type="checkbox" name="tutorCheck" id="tutorCheck" ng-model="edittedUser.tutorCheck" class="form-control">
+        </div>
+        <div class="show_animate" ng-show="edittedUser.tutorCheck">
+
+
+
+
+        </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="#/profile/{{edittedUser.displayName}}" class="btn btn-link">Cancel</a>
         </div>
     </form>
-    <form ng-submit="uploadProfilePic()" enctype="multipart/form-data">
+    <!--<form ng-submit="uploadProfilePic()" enctype="multipart/form-data">
         Select an image for your profile picture:
         <input type="file" name="img" file-model="myFileProfile">
         <button type="submit">Upload Image</button>
@@ -35,5 +57,5 @@
         Select an image for your cover photo:
         <input type="file" name="img" file-model="myFile">
         <button type="submit">Upload Image</button>
-    </form>
+    </form>!-->
 </div>
