@@ -1,0 +1,27 @@
+{
+  "name": "c4h-poc",
+  "homepage": "sure",
+  "description": "hvide mennesker til salg",
+  "main": "",
+  "keywords": [
+    "white",
+    "caucasions",
+    "and",
+    "others"
+  ],
+  "authors": [
+    "me"
+  ],
+  "license": "also me",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-select": "^0.19.8",
+    "angular": "^1.6.4"
+  }
+}
