@@ -163,7 +163,7 @@ angular.module('meanseed')
 
         $scope.login = function() {
             AuthService.login($scope.user).then(function(user) {
-                $location.path('/about');
+                $location.path('/profile/'+user.displayName);
                 $scope.setCurrentUser(user);
                 $scope.isAuthorized = AuthService.isAuthorized;
                 console.log("login success");
