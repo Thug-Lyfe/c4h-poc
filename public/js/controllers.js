@@ -109,9 +109,9 @@ angular.module('meanseed')
 
     })
 
-    .controller('profileEditController', function($scope, AuthService, $routeParams, $http, fileUpload) {
-        $scope.uploadProfilePic = function(){
-            var file = $scope.myFile;
+    .controller('profileEditController', function($scope, AuthService, $location, $routeParams, $http, fileUpload) {
+        /*$scope.uploadProfilePic = function(){
+            var file = $scope.myFileProfile;
 
             console.log('file is ' );
             console.dir(file);
@@ -127,7 +127,7 @@ angular.module('meanseed')
 
             var uploadUrl = "/user/upload/coverpic";
             fileUpload.uploadFileToUrl(file, uploadUrl);
-        };
+        };*/
         $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
             $scope.edittedUser = res.data[0];
 
@@ -135,8 +135,23 @@ angular.module('meanseed')
 
                 $http.put('/user/editprofile', $scope.edittedUser).then(function(res) {
                     if (res.data.success) {
-                        console.log(res.data.msg);
+                        var file = $scope.myFileProfile;
+                        if(file != null){
+                            console.log('file is ' );
+                            console.dir(file);
+                            var uploadUrl = "/user/upload/profilepic";
+                            fileUpload.uploadFileToUrl(file, uploadUrl);
+                        }
+                        file = $scope.myFile;
+                        if(file != null){
+                            console.log('file is ' );
+                            console.dir(file);
+                            uploadUrl = "/user/upload/coverpic";
+                            fileUpload.uploadFileToUrl(file, uploadUrl);
+                        }
 
+                        console.log(res.data.msg);
+                        $location.path('/profile/'+$scope.currentUser.displayName);
                     } else {
                         console.log(res.data.msg);
                     }
