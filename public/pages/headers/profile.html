@@ -1,15 +1,31 @@
 <div class="container">
-    <div class="fb-profile">
+    <div class="fb-profile" style="display:block;margin-bottom:100px">
+        <div>
         <img align="left" class="fb-image-lg" src="{{profile.coverPic}}"/>
         <img align="left" class="fb-image-profile thumbnail" src="{{profile.profilePic}}"/>
         <div class="fb-profile-text">
             <h1>{{profile.displayName}}</h1>
+            <button style="float:right" ng-show="own" ng-click="editProfile()" type="button" class="btn btn-default btn-md">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+            </button>
+            <span ng-repeat="fag in profile.fag" class="ng-scope">
+                <span class="ui-select-match-item btn btn-default btn-xs" tabindex="-1" type="button" >
+                    <span >
+                        <span class="ng-binding ng-scope">{{fag.name}},{{fag.level}}</span>
+                    </span>
+                </span>
+            </span>
 
-            <p>{{profile.userInfo}}</p>
         </div>
-        <button ng-show="own" ng-click="editProfile()" type="button" class="btn btn-default btn-md">
-            <i class="fa fa-pencil" aria-hidden="true"></i> Edit
-        </button>
+
+    </div>
+    </div>
+    <div style="float: right">
+        <p >Phone Number: {{(profile.phoneNumber != null) ? profile.phoneNumber : "not available"}}</p>
+        <p >age: {{(profile.age != null) ? profile.age : "not available"}}</p>
+        <p >Zip Code: {{(profile.zipcode != null) ? profile.zipcode : "not available"}}</p>
+
     </div>
 </div>
+
 
