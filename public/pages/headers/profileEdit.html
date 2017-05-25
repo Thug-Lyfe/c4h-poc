@@ -52,7 +52,7 @@
                 <label for="grade">Select the grade you are able to tutor in {{fag.name}}</label>
             <ui-select id="grade" ng-model="fag.level" theme="selectize"  title="Choose a Grade">
                 <ui-select-match placeholder="Select a Grade">{{fag.level}}</ui-select-match>
-                <ui-select-choices repeat="grade in availableGrade | filter: $select.search">
+                <ui-select-choices repeat="grade in availableFag.grade | filter: $select.search">
                     <span ng-bind-html="grade | highlight: $select.search"></span>
                 </ui-select-choices>
             </ui-select>
