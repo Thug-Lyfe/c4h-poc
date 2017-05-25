@@ -8,24 +8,19 @@
     <div class="input-group">
         <span class="input-group-addon" title="Subject" id="subjectLabel">Subject</span>
 
-        <select id="searchbygenerals_currency" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.subject">
-            <option value="math">Mathematics</option>
-            <option value="eng">English</option>
+        <select  id="searchbygenerals_currency" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.fag.name">
+            <option ng-repeat="fag in availableFag.temp" value="{{fag.name}}" > {{fag.name}}</option>
         </select>
 
-        <span class="input-group-addon" title="Level" id="levelLabel">Level</span>
+        <span class="input-group-addon" title="Level" id="levelLabel">Grade</span>
 
-        <select id="searchbygenerals_currency3" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.lvl">
-            <option value="7">7th Grade</option>
-            <option value="9">9th Grade</option>
+        <select id="searchbygenerals_currency3" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.fag.level">
+            <option ng-repeat="grade in availableFag.grade" value="{{grade}}"> {{grade}}</option>
         </select>
 
-        <span class="input-group-addon" title="Level" id="levelLabel3">Level</span>
+        <span class="input-group-addon" title="Level" id="levelLabel3">Zipcode</span>
+        <input type="text" id="searchZipcode" name="searchZipcode" class="form-control" ng-model="filterstuff.zipcode">
 
-        <select id="searchbygenerals_currency2" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.smth">
-            <option value="1">HUF</option>
-            <option value="2">EUR</option>
-        </select>
         <span class="input-group-addon">Text</span>
         <input type="text" id="searchtext" name="searchtext" class="form-control" ng-model="filterstuff.displayName">
         <span class="input-group-btn" id="reset">

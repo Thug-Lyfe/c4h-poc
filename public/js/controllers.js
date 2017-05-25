@@ -72,6 +72,7 @@ angular.module('meanseed')
             "link": "search/something?statistics"
         },
         ];
+
     })
 
     .controller('aboutController', function($scope) {
@@ -80,6 +81,21 @@ angular.module('meanseed')
 
     .controller('searchController', function($scope, $http) {
         $scope.message = 'Motherfucking search page.';
+        $scope.availableFag = {};
+        $scope.availableFag.temp = [
+            {name:'mathematics', level:''},
+            {name:'danish', level:''},
+            {name:'physics',level:''},
+            {name:'chemistry',level:''},
+            {name:'english',level:''},
+            {name:'history',level:''},
+            {name:'geography',level:''},
+            {name:'religion',level:''},
+            {name:'social science',level:''},
+            {name:'biology',level:''},
+            {name:'music',level:''},
+            {name:'statistics',level:''}];
+        $scope.availableFag.grade = ['4th','5th','6th','7th','8th','9th','10th','11th','12th','13th',];
         $http.get('/api/search').then(function(res){
             $scope.list = res.data;
 
@@ -131,7 +147,7 @@ angular.module('meanseed')
         $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
             $scope.edittedUser = res.data[0];
 
-            $scope.availableFag = {}
+
             $scope.availableFag.chosenFag = [];
             $scope.availableFag.temp = [
                 {name:'mathematics', level:''},
@@ -146,6 +162,7 @@ angular.module('meanseed')
                 {name:'biology',level:''},
                 {name:'music',level:''},
                 {name:'statistics',level:''}];
+
             $scope.edittedUser.fag.forEach(function(fag){
                 $scope.availableFag.chosenFag.push({name:fag.name,level:fag.level});
                 for (var x = 0; x< $scope.availableFag.temp.length;x++){
@@ -189,8 +206,21 @@ angular.module('meanseed')
         });
 
 
-
-        $scope.availableGrade = ['4th','5th','6th','7th','8th','9th','10th','11th','12th','13th',];
+        $scope.availableFag = {};
+        $scope.availableFag.temp = [
+            {name:'mathematics', level:''},
+            {name:'danish', level:''},
+            {name:'physics',level:''},
+            {name:'chemistry',level:''},
+            {name:'english',level:''},
+            {name:'history',level:''},
+            {name:'geography',level:''},
+            {name:'religion',level:''},
+            {name:'social science',level:''},
+            {name:'biology',level:''},
+            {name:'music',level:''},
+            {name:'statistics',level:''}];
+        $scope.availableFag.grade = ['4th','5th','6th','7th','8th','9th','10th','11th','12th','13th',];
 
 
 
