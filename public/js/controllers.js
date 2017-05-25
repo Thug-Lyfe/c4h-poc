@@ -131,10 +131,35 @@ angular.module('meanseed')
         $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
             $scope.edittedUser = res.data[0];
 
+            $scope.availableFag = {}
+            $scope.availableFag.chosenFag = [];
+            $scope.availableFag.temp = [
+                {name:'mathematics', level:''},
+                {name:'danish', level:''},
+                {name:'physics',level:''},
+                {name:'chemistry',level:''},
+                {name:'english',level:''},
+                {name:'history',level:''},
+                {name:'geography',level:''},
+                {name:'religion',level:''},
+                {name:'social science',level:''},
+                {name:'biology',level:''},
+                {name:'music',level:''},
+                {name:'statistics',level:''}];
+            $scope.edittedUser.fag.forEach(function(fag){
+                $scope.availableFag.chosenFag.push({name:fag.name,level:fag.level});
+                for (var x = 0; x< $scope.availableFag.temp.length;x++){
+                    if(fag.name == $scope.availableFag.temp[x].name){
+                        $scope.availableFag.temp[x].level = fag.level;
+                    }
+                }
+            })
+
             $scope.editProfile = function(){
 
-                 console.log($scope.edittedUser);
+                $scope.edittedUser.fag = $scope.availableFag.chosenFag;
                 $http.put('/user/editprofile', $scope.edittedUser).then(function(res) {
+
                     if (res.data.success) {
                         var file = $scope.myFileProfile;
                         if(file != null){
@@ -164,19 +189,7 @@ angular.module('meanseed')
         });
 
 
-        $scope.availableFag = [
-            {name:'mathematics',level:''},
-            {name:'danish',level:''},
-            {name:'physics',level:''},
-            {name:'chemistry',level:''},
-            {name:'english',level:''},
-            {name:'history',level:''},
-            {name:'geography',level:''},
-            {name:'religion',level:''},
-            {name:'social science',level:''},
-            {name:'biology',level:''},
-            {name:'music',level:''},
-            {name:'statistics',level:''}];
+
         $scope.availableGrade = ['4th','5th','6th','7th','8th','9th','10th','11th','12th','13th',];
 
 

@@ -39,16 +39,16 @@
 
             <div class="select_outerDiv_fix">
             <label for="fag">Select subjects to tutor in</label>
-            <ui-select id="fag" multiple ng-model="edittedUser.fag" theme="bootstrap" close-on-select="false" title="Choose subject(s)">
+            <ui-select id="fag" multiple ng-model="availableFag.chosenFag" theme="bootstrap" close-on-select="false" title="Choose subject(s)">
 
                 <ui-select-match placeholder="Select Subjects...">{{$item.name}},{{$item.level}}</ui-select-match>
-                <ui-select-choices repeat="fag in availableFag | filter:$select.search">
+                <ui-select-choices repeat="fag in availableFag.temp | filter:$select.search">
                     {{fag.name}}
                 </ui-select-choices>
             </ui-select>
             </div>
 
-            <div ng-repeat="fag in edittedUser.fag" class="select_outerDiv_fix_v2">
+            <div ng-repeat="fag in availableFag.chosenFag" class="select_outerDiv_fix_v2">
                 <label for="grade">Select the grade you are able to tutor in {{fag.name}}</label>
             <ui-select id="grade" ng-model="fag.level" theme="selectize"  title="Choose a Grade">
                 <ui-select-match placeholder="Select a Grade">{{fag.level}}</ui-select-match>
