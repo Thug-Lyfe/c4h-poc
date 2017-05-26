@@ -12,7 +12,7 @@ router.get("/names",function(req,res){
 });
 
 router.get("/profile/:displayName",function(req,res){
-    User.find({displayName: req.params.displayName}).select('-password')
+    User.find({displayName: req.params.displayName}).select('-password -_id')
         .exec(function (err, user) {
         if(err){
             res.send(err);

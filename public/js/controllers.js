@@ -174,7 +174,12 @@ angular.module('meanseed')
 
             $scope.editProfile = function(){
 
-                $scope.edittedUser.fag = $scope.availableFag.chosenFag;
+                while($scope.edittedUser.fag.length > 0){
+                    $scope.edittedUser.fag.pop();
+                }
+                $scope.availableFag.chosenFag.forEach(function(fag){
+                    $scope.edittedUser.fag.push({name:fag.name,level:fag.level});
+                });
                 $http.put('/user/editprofile', $scope.edittedUser).then(function(res) {
 
                     if (res.data.success) {
@@ -207,19 +212,6 @@ angular.module('meanseed')
 
 
         $scope.availableFag = {};
-        $scope.availableFag.temp = [
-            {name:'mathematics', level:''},
-            {name:'danish', level:''},
-            {name:'physics',level:''},
-            {name:'chemistry',level:''},
-            {name:'english',level:''},
-            {name:'history',level:''},
-            {name:'geography',level:''},
-            {name:'religion',level:''},
-            {name:'social science',level:''},
-            {name:'biology',level:''},
-            {name:'music',level:''},
-            {name:'statistics',level:''}];
         $scope.availableFag.grade = ['4th','5th','6th','7th','8th','9th','10th','11th','12th','13th',];
 
 
