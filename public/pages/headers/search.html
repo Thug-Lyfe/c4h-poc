@@ -37,19 +37,29 @@
 
     <section class="col-xs-12 col-sm-6 col-md-12">
         <article ng-repeat="user in list | filter:filterstuff" class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="{{user.profilePic}}" alt="Lorem ipsum" /></a>
+            <div class="col-xs-12 col-sm-12 col-md-3" style="height:256px;overflow:hidden">
+
+                <a href="#profile/{{user.displayName}}" title="Go to {{user.displayName}}s profile" class="thumbnail">
+                    <img src="{{user.profilePic != null ? user.profilePic : '../pics/default.png'}}" />
+                </a>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
+            <div class="col-xs-12 col-sm-12 col-md-2" style="max-height:256px;overflow:hidden">
                 <ul class="meta-search">
-                    <li><i class="fa fa-envelope-o"></i> <span>{{user.email}}</span></li>
-                    <li><i class="fa fa-clock-o"></i> <span>10:13 am</span></li>
-                    <li><i class="fa fa-tags"></i> <span>Sport</span></li>
+                    <li ><i class="fa fa-envelope-o"></i> <span>{{user.email}}</span></li>
+                    <span ng-show="user.age != null ? true : false">{{user.age}} yr</span></li>
+                    <li ng-show="user.zipcode != null ? true : false"><i class="fa fa-map-marker"></i> <span>{{user.zipcode}}</span></li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
+            <div class="col-xs-12 col-sm-12 col-md-7" style="max-height:256px;overflow:hidden">
                 <h3><a href="#profile/{{user.displayName}}" title="">{{user.displayName}}</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
+                <p style="max-height:150px;">{{user.userInfo}}</p>
+                <span ng-repeat="fag in user.fag" class="ng-scope">
+                <span class="ui-select-match-item btn btn-default btn-xs" tabindex="-1" type="button" >
+                    <span >
+                        <span class="ng-binding ng-scope">{{fag.name}},{{fag.level}}</span>
+                    </span>
+                </span>
+            </span>
             </div>
             <span class="clearfix border"></span>
         </article>

@@ -59,6 +59,21 @@
             </div>
 
         </div>
+
+        <div title="a tag can be 25 characters, with a popup text of your own choosing. seperate them with a : like in the example shown.">
+            <label for="form_textarea">Write your own customizable tags for your proile and the search tab</label>
+
+            <span ng-repeat="tag in edittedUser.specialities.split('\n')" class="ng-scope">
+                <span class="ui-select-match-item btn btn-default btn-xs" tabindex="-1" type="button" >
+                    <span>
+                        <span class="ng-binding ng-scope" title="{{tag.indexOf(':') != -1 ? tag.slice(indexOf(':')) : '' }}">{{tag.indexOf(':')>25 ? tag.slice(0,tag.indexOf(':')) : tag.slice(0,25)}}</span>
+                    </span>
+                </span>
+            </span>
+
+            <textarea id="form_textarea" placeholder="Write your own tags here!" rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input awesome_textarea" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">{{(edittedUser.specialities.isEmpty()) ? edittedUser.specialities : "This is an example:This will be the popup text\nThis is another tag:This will be its popup text"}}</textarea>
+        </div>
+
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="#/profile/{{edittedUser.displayName}}" class="btn btn-link">Cancel</a>
