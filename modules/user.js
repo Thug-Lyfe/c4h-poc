@@ -27,7 +27,7 @@ var UserSchema = new Schema({
     phoneNumber: Number,
     tutorCheck: Boolean,
     fag: [{ name: String, level: String}],
-    specialities: [String],
+    specialities: [{name:String,popup:String}],
     profilePic: String,
     coverPic:  String,
     userInfo: String,
