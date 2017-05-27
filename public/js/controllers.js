@@ -147,9 +147,11 @@ angular.module('meanseed')
         $http.get('/api/profile/'+$routeParams.displayName).then(function(res){
             $scope.edittedUser = res.data[0];
 
+            $scope.temp = {};
+            $scope.temp.grade = ['4th','5th','6th','7th','8th','9th','10th','11th','12th','13th',];
 
-            $scope.availableFag.chosenFag = [];
-            $scope.availableFag.temp = [
+            $scope.temp.chosenFag = [];
+            $scope.temp.availableFag = [
                 {name:'mathematics', level:''},
                 {name:'danish', level:''},
                 {name:'physics',level:''},
@@ -162,29 +164,51 @@ angular.module('meanseed')
                 {name:'biology',level:''},
                 {name:'music',level:''},
                 {name:'statistics',level:''}];
+            $scope.temp.specs = '';
+            $scope.edittedUser.specialities.forEach(function(spec,index){
+                if(index != 0){
+                    $scope.temp.specs += '\n';
+                }
+                $scope.temp.specs += spec.name +'::'+spec.popup;
+            })
 
             $scope.edittedUser.fag.forEach(function(fag){
-                $scope.availableFag.chosenFag.push({name:fag.name,level:fag.level});
-                for (var x = 0; x< $scope.availableFag.temp.length;x++){
-                    if(fag.name == $scope.availableFag.temp[x].name){
-                        $scope.availableFag.temp[x].level = fag.level;
+                $scope.temp.chosenFag.push({name:fag.name,level:fag.level});
+                for (var x = 0; x< $scope.temp.availableFag.length;x++){
+                    if(fag.name == $scope.temp.availableFag[x].name){
+                        $scope.temp.availableFag[x].level = fag.level;
                     }
                 }
             })
+
 
             $scope.editProfile = function(){
 
                 while($scope.edittedUser.fag.length > 0){
                     $scope.edittedUser.fag.pop();
                 }
-                $scope.availableFag.chosenFag.forEach(function(fag){
+                $scope.temp.chosenFag.slice(0,4).forEach(function(fag){
                     $scope.edittedUser.fag.push({name:fag.name,level:fag.level});
+                });
+                while($scope.edittedUser.specialities.length > 0){
+                    $scope.edittedUser.specialities.pop()
+                }
+                $scope.temp.specs.split('\n').slice(0,4).forEach(function(spec){
+                    var splitted = spec.split('::');
+                    if(splitted.length == 1){
+                        $scope.edittedUser.specialities.push({name:splitted[0],popup:''});
+                    }
+                    if(splitted.length >= 2){
+                        $scope.edittedUser.specialities.push({name:splitted[0],popup:splitted[1]});
+                    }
                 });
                 $http.put('/user/editprofile', $scope.edittedUser).then(function(res) {
 
                     if (res.data.success) {
                         var file = $scope.myFileProfile;
+
                         if(file != null){
+
                             console.log('file is ' );
                             console.dir(file);
                             var uploadUrl = "/user/upload/profilepic";
@@ -198,21 +222,25 @@ angular.module('meanseed')
                             fileUpload.uploadFileToUrl(file, uploadUrl);
                         }
 
+
                         console.log(res.data.msg);
-                        $location.path('/profile/'+$scope.currentUser.displayName);
+
                     } else {
                         console.log(res.data.msg);
                     }
                 }, function (err) {
                     console.log(err.data.msg);
+                }).then(function(){
+                    $location.path('/profile/'+$scope.currentUser.displayName);
                 });
             }
 
         });
 
+        $scope.gen_spec = function(){
+            $scope.temp.specs += '\ntag name::tag popup';
+        }
 
-        $scope.availableFag = {};
-        $scope.availableFag.grade = ['4th','5th','6th','7th','8th','9th','10th','11th','12th','13th',];
 
 
 

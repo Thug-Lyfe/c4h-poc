@@ -294,7 +294,7 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 
 
 .awesome_textarea:focus {
-    background: none repeat scroll 0 0 #FFFFFF;
+
     outline-width: 0;
 }
 

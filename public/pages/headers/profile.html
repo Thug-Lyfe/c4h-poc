@@ -15,8 +15,17 @@
                     </span>
                 </span>
             </span>
-
+            <br><br>
+            <span ng-repeat="spec in profile.specialities" class="ng-scope">
+                <span class="ui-select-match-item btn btn-default btn-xs" tabindex="-1" type="button" >
+                    <span >
+                        <span class="ng-binding ng-scope" title="{{spec.popup}}">{{spec.name}}</span>
+                    </span>
+                </span>
+            </span>
         </div>
+
+
 
     </div>
     </div>
