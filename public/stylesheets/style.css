@@ -105,20 +105,20 @@ footer li {
 .mb20 { margin-bottom: 20px; }
 
 hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
-hgroup h1 { font: 500 normal 1.625em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
-hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0; padding-bottom: 10px; }
+hgroup h1 { font: 500 normal 25px "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
+hgroup h2.lead { font: normal normal 21px "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0; padding-bottom: 10px; }
 
 .search-result .thumbnail { border-radius: 0 !important; }
 .search-result:first-child { margin-top: 0 !important; }
 .search-result { margin-top: 20px; }
 .search-result .col-md-2 { border-right: 1px dotted #ccc; min-height: 140px; }
 .search-result ul { padding-left: 0 !important; list-style: none;  }
-.search-result ul li { font: 400 normal .85em "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
+.search-result ul li { font: 400 normal 16px "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
 .search-result ul li i { padding-right: 5px; }
 .search-result .col-md-7 { position: relative; }
-.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
+.search-result h3 { font: 500 normal 18px "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
 .search-result h3 > a, .search-result i { color: #248dc1 !important; }
-.search-result p { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; }
+.search-result p { font: normal normal 16px "Roboto",Arial,Verdana,sans-serif; }
 .search-result span.plus { position: absolute; right: 0; top: 126px; }
 .search-result span.plus a { background-color: #248dc1; padding: 5px 5px 3px 5px; }
 .search-result span.plus a:hover { background-color: #414141; }
@@ -189,8 +189,8 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
     width: 100% !important;
     height: 34px;
     padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
+    font-size: 16px;
+    line-height: 1.5;
     color: #555;
     background-image: none;
     border: 1px solid #ccc;
@@ -204,9 +204,9 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 .select_outerDiv_fix .ui-select-choices-row:hover{
     background-color:lightgray;
     padding-left: 6px;
-    font-size:15px;
+    font-size:16px;
     height: 22px;
-    line-height: 22px;
+    line-height: 23px;
 }
 .select_outerDiv_fix .ui-select-choices-row{
     padding-left:5px;
@@ -216,8 +216,8 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
     width: 100%;
     height: 34px;
     padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
+    font-size: 16px;
+    line-height: 1.5;
     color: #555;
     background-color: #fff;
     background-image: none;
@@ -286,8 +286,8 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
     color: #555555;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 1em;
-    line-height: 1.4em;
+    font-size: 16px;
+    line-height: 1.5em;
     padding: 5px 8px;
     transition: background-color 0.2s ease 0s;
 }
@@ -297,7 +297,9 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 
     outline-width: 0;
 }
-
+.ui-select-match-item{
+    font-size:16px;
+}
 
 
 
