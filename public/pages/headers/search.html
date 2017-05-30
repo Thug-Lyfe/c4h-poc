@@ -23,7 +23,6 @@
             <button ng-click="resetSearch()" type="button" class="btn btn-secondary">Reset</button>
         </span>
     </div>
-{{filterstuff}}
     <br>
     <hgroup class="mb20">
         <h1>Search Results</h1>
@@ -40,8 +39,8 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2" style="max-height:256px;overflow:hidden">
                 <ul class="meta-search">
-                    <li ><i class="fa fa-envelope-o"></i> <span>{{user.email}}</span></li>
-                    <span ng-show="user.age != null ? true : false">{{user.age}} yr</span></li>
+                    <li ><span>{{user.email}}</span></li>
+                    <li ng-show="user.age != null ? true : false"><span>{{user.age}} yr</span></li>
                     <li ng-show="user.zipcode != null ? true : false"><i class="fa fa-map-marker"></i> <span>{{user.zipcode}}</span></li>
                 </ul>
             </div>
