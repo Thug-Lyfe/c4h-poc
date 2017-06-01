@@ -69,7 +69,7 @@ router.post('/authenticate', function(req, res) {
     });
 });
 
-router.put('/editprofile', function (req, res) {
+router.put('/editprofile', passport.authenticate('jwt', { session: false}), function (req, res) {
     var token = getToken(req.headers);
     if (token) {
         var decoded = jwt.decode(token, jwtConfig.secret);
@@ -88,7 +88,7 @@ router.put('/editprofile', function (req, res) {
     }
 });
 
-router.post('/upload/profilepic', function(req, res) {
+router.post('/upload/profilepic', passport.authenticate('jwt', { session: false}), function(req, res) {
 
     upload(req, res, function (err) {
         if(err){
@@ -125,7 +125,7 @@ router.post('/upload/profilepic', function(req, res) {
 
 });
 
-router.post('/upload/coverpic', function(req, res) {
+router.post('/upload/coverpic', passport.authenticate('jwt', { session: false}), function(req, res) {
 
     upload(req, res, function (err) {
         if(err){
