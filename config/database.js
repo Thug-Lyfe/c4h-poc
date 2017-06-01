@@ -13,3 +13,4 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 module.exports = {
     'database': conUrl
 };
+

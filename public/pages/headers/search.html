@@ -2,6 +2,7 @@
 <div style="margin-top:50px" class="container">
 
     <div class="input-group">
+
         <span class="input-group-addon" title="Subject" id="subjectLabel">Subject</span>
 
         <select  id="searchbygenerals_currency" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.fag.name">
@@ -13,6 +14,8 @@
         <select id="searchbygenerals_currency3" name="searchbygenerals[currency]" class="form-control" ng-model="filterstuff.fag.level">
             <option ng-repeat="grade in availableFag.grade" value="{{grade}}"> {{grade}}</option>
         </select>
+        </div>
+    <div class="input-group">
 
         <span class="input-group-addon" title="Level" id="levelLabel3">Zipcode</span>
         <input type="text" id="searchZipcode" name="searchZipcode" class="form-control" ng-model="filterstuff.zipcode">
@@ -22,6 +25,7 @@
         <span class="input-group-btn" id="reset">
             <button ng-click="resetSearch()" type="button" class="btn btn-secondary">Reset</button>
         </span>
+
     </div>
     <br>
     <hgroup class="mb20">
