@@ -138,6 +138,7 @@ hgroup h2.lead { font: normal normal 21px "Roboto",Arial,Verdana,sans-serif; col
   width: 20%;
 }
 
+
 .fb-image-lg
 {
   height: 400px;
@@ -149,6 +150,10 @@ hgroup h2.lead { font: normal normal 21px "Roboto",Arial,Verdana,sans-serif; col
     font-weight: 700;
     font-size:16px;
   }
+    .input-group{
+
+
+    }
   .fb-image-profile
   {
     margin: -45px 10px 0px 25px;
@@ -300,8 +305,15 @@ hgroup h2.lead { font: normal normal 21px "Roboto",Arial,Verdana,sans-serif; col
 .ui-select-match-item{
     font-size:16px;
 }
+.input-group{
+    width:100%;
 
-
-
+}
+.input-group-addon{
+    width:25%;
+}
+.input-group .form-control{
+    width:100%;
+}
 
 
