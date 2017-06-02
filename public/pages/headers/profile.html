@@ -1,8 +1,8 @@
 <div class="container">
     <div class="fb-profile" style="display:block;margin-bottom:100px">
         <div>
-        <img align="left" class="fb-image-lg" src="{{profile.coverPic}}"/>
-        <img align="left" class="fb-image-profile thumbnail" src="{{profile.profilePic}}"/>
+        <img align="left" class="fb-image-lg" src="{{profile.coverPic != null ? profile.coverPic : '../pics/default.png'}}" onerror="if (this.src != '../pics/default-cover-image.jpg') this.src = '../pics/default-cover-image.jpg';" />
+        <img align="left" class="fb-image-profile thumbnail" src="{{profile.profilePic != null ? profile.profilePic : '../pics/default.png'}}" onerror="if (this.src != '../pics/default.png') this.src = '../pics/default.png';" />
         <div class="fb-profile-text">
             <h1>{{profile.displayName}}</h1>
             <button style="float:right" ng-show="own" ng-click="editProfile()" type="button" class="btn btn-default btn-md">
@@ -10,7 +10,7 @@
             </button>
             <span ng-repeat="fag in profile.fag" class="ng-scope">
                 <span class="ui-select-match-item btn btn-default btn-xs" tabindex="-1" type="button" >
-                    <span >
+                    <span>
                         <span class="ng-binding ng-scope">{{fag.name}},{{fag.level}}</span>
                     </span>
                 </span>
